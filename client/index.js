@@ -1,6 +1,6 @@
 const listingEl = document.getElementById("listing");
 
-async function listCoins() {
+async function fetchCoinMarketCap() {
   let cryptoListing = await fetch("http://127.0.0.1:8000/crypto/listing");
   cryptoListing = await cryptoListing.json();
 
@@ -8,7 +8,7 @@ async function listCoins() {
 }
 
 const displayListing = async () => {
-  const coinData = await listCoins();
+  const coinData = await fetchCoinMarketCap();
 
   coinData.forEach((coin) => {
     console.log(coin);
@@ -22,4 +22,4 @@ const displayListing = async () => {
   });
 };
 
-document.addEventListener('click', displayListing);
+document.querySelector('.load-btn').addEventListener('click', displayListing)
